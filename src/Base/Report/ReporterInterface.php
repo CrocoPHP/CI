@@ -18,31 +18,29 @@ use CrocoPhpCI\Base\CrocoPhpInterface;
  */
 interface ReporterInterface extends CrocoPhpInterface
 {
+    /**
+     * add a new Writer to reporter
+     *
+     * @param string $name
+     * @param WriterInterface $writer
+     * @return $this
+     */
+    public function addWriter($name , WriterInterface $writer);
+
+    /**
+     * return a Writer specified by his name
+     *
+     * @param string $name
+     * @return WriterInterface
+     */
+    public function getWriter($name);
 
     /**
      * init the reporter
      *
-     * something like open or touch a new file
-     * open database connection etc ....
-     *
      * @return $this
      */
     public function init();
-
-    /**
-     * set up custom options to init reporter
-     *
-     * @param ReportConfig $options
-     * @return $this
-     */
-    public function setOptions(ReportConfig $options);
-
-    /**
-     * return full options array
-     *
-     * @return array
-     */
-    public function getOptions();
 
     /**
      * add a new element to report pool
