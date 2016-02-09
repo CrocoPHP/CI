@@ -9,6 +9,7 @@
 namespace CrocoPhpCI\Base\Report;
 
 use CrocoPhpCI\Base\Config\ReportConfig;
+use CrocoPhpCI\Base\Config\WriterConfig;
 
 /**
  * Interface WriterInterface
@@ -31,7 +32,7 @@ interface WriterInterface {
      * @param ReportConfig $options
      * @return $this
      */
-    public function setOptions(ReportConfig $options);
+    public function setOptions(WriterConfig $options);
 
     /**
      * return full options array

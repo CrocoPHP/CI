@@ -21,17 +21,11 @@ interface ConfigInterface
     public function getFactory();
 
     /**
-     * return reporter class name list
-     * reporters class name list like :
-     *
-     * array(
-     *    '\Namespace\Reporter\MyReporterOne' => new \Config\ReporterConfig(....) ,
-     *    '\Namespace\Reporter\MyReporterTwo' => new \Config\ReporterConfig(....) , ....
-     * );
+     * A reporter config class instance
      *
      * @return array
      */
-    public function getReporterList();
+    public function getReporter();
 
     /**
      * set the command line helper class name to use in your Ci application

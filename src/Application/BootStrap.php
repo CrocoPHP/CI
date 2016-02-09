@@ -60,7 +60,7 @@ class BootStrap extends CrocoPhpAbstract implements FastCIInterface
 
         $factory = ($this->getFactory());
 
-        $reporterList =  $this->config->getReporterList();
+        $reporterList =  $this->config->getReporter();
 
         foreach($reporterList as $className => $reporterConfig) {
 

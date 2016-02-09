@@ -12,36 +12,21 @@ use CrocoPhpCI\Base\Report\ReporterInterface;
  */
 interface CrocoPhpInterface {
 
-    /**
-     * add a new Reporter
+    /***
+     * set up reporters :
      *
-     * @param string $name
+     *
      * @param ReporterInterface $reporter
      * @return $this
      */
-    public function addReporter($name , ReporterInterface $reporter);
-
-    /***
-     * set up full reporters array like :
-     *
-     * array(
-     *      'mail' => MailReporter Instance,
-     *      'file' => FileReporter Instance,
-     *       ......
-     * );
-     *
-     * @param array $reporters
-     * @return $this
-     */
-    public function setReporters(array $reporters);
+    public function setReporter(ReporterInterface $reporter);
 
     /**
-     * get the reporter by name
+     * get the reporter
      *
-     * @param $name
      * @return ReporterInterface
      */
-    public function getReporter($name);
+    public function getReporter();
 
     /**
      * set up the current project

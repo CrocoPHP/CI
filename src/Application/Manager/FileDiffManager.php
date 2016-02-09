@@ -1,18 +1,18 @@
 <?php
 /**
- *
+ * use this manager for each statement using
+ * git diff
  */
 
 namespace CrocoPhpCI\Application\Manager;
 
-use CrocoPhpCI\Application\CrocoPhpAbstract;
 use CrocoPhpCI\Base\Command\GitInterface;
 use CrocoPhpCI\Base\Config\StatementConfig;
 use CrocoPhpCI\Base\Manager\ManagerInterface;
 use CrocoPhpCI\Base\Statement\FileInterface;
 
 class FileDiffManager
-    extends CrocoPhpAbstract
+    extends AbstractManager
     implements ManagerInterface
 {
     /**
@@ -52,40 +52,13 @@ class FileDiffManager
      */
     public function init()
     {
-        usort($this->statementList, function(StatementConfig $a, StatementConfig $b)
-        {
-            if ($a->getPriority() == $b->getPriority()) {
-                return 0;
-            }
-            return ($a->getPriority() < $b->getPriority()) ? -1 : 1;
-        });
+        $this->sortStatements();
 
         $this->setCommandLine($this->project->getGit());
 
         $this->fileList =  $this->command->diff($this->commit->getOldRef() , $this->commit->getNewRef());
     }
 
-    /**
-     *
-     *
-     * @param $className
-     * @return FileInterface
-     */
-    protected function createStatement($className)
-    {
-        $factory = $this->factory;
-        /**
-         * @var FileInterface $statement
-         */
-        $statement = $factory($className);
-
-        $statement->setCommit($this->commit)
-            ->setCommandLine($this->command)
-            ->setProject($this->project)
-            ->setFactory($this->factory);
-
-        return $statement;
-    }
     /**
      * return the result of all statement
      *

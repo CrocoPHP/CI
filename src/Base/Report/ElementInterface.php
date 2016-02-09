@@ -33,7 +33,7 @@ interface ElementInterface {
      * @param $statementName
      * @return string
      */
-    public function getStatementName($statementName);
+    public function getStatementName();
 
     /**
      * set your custom statement name

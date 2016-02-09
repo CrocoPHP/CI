@@ -18,9 +18,9 @@ use CrocoPhpCI\Base\Report\ReporterInterface;
 class CrocoPhpAbstract implements CrocoPhpInterface {
 
     /**
-     * @var array
+     * @var ReporterInterface
      */
-    protected $reporters = array();
+    protected $reporter;
 
     /**
      * @var ProjectInterface
@@ -42,34 +42,20 @@ class CrocoPhpAbstract implements CrocoPhpInterface {
      */
     protected $factory;
     /**
-     * add a new Reporter
-     *
-     * @param string $name
-     * @param ReporterInterface $reporter
-     * @return $this
+     * @inheritdoc
      */
-    public function addReporter($name, ReporterInterface $reporter)
+    public function setReporter(ReporterInterface $reporter)
     {
-        $this->reporters[$name] = $reporter;
+        $this->reporter = $reporter;
         return $this;
     }
 
     /**
-     * get the reporter by name
-     *
-     * return null if name is unknown
-     *
-     * @param $name
-     * @return ReporterInterface
+     * @inheritdoc
      */
-    public function getReporter($name)
+    public function getReporter()
     {
-
-        if(array_key_exists($name , $this->reporters)) {
-            return $this->reporters[$name];
-        }
-
-        return null;
+        return $this->reporter;
     }
 
     /**
